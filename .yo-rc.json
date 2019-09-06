@@ -1,0 +1,68 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "ma.camerapack.campacksys",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "6.2.0",
+    "applicationType": "monolith",
+    "baseName": "CAMPACKSYS",
+    "packageName": "ma.camerapack.campacksys",
+    "packageFolder": "ma/camerapack/campacksys",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTBmZTVlOWM3NDkyOGY1ZDE3NmQ4NThhYWQyZDlmOTY0ZGVjNDk1MWJlZmU0ODc5MTFkNWQ3NmY2NGMyZWE3OGJjMjM5NDljMGFjNjBiNTAzZGVmOGFjOTE1ODY1ZDk4MTQ3YWU0OTBjM2IyYTE0M2UwNzk4NjMyZDI1NzY4NmY=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [
+      "protractor"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nav-element",
+        "version": "2.1.10"
+      },
+      {
+        "name": "generator-jhipster-primeng",
+        "version": "3.0.0"
+      },
+      {
+        "name": "generator-jhipster-standalone-profile",
+        "version": "2.3.0"
+      },
+      {
+        "name": "generator-jhipster-primeng-charts",
+        "version": "1.2.0"
+      },
+      {
+        "name": "generator-jhipster-angular-material-integration",
+        "version": "1.0.17"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "ar-ly",
+      "en"
+    ],
+    "blueprints": []
+  }
+}

@@ -1,0 +1,217 @@
+
+
+//******************Externals****************//
+
+
+entity Client {
+	name String required maxlength(100),
+    address String required maxlength(250),
+	email String pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
+	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+    clientType ClientType
+}
+
+entity Supplier {
+	name String maxlength(100),
+    address String maxlength(250),
+	email String required pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
+	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/)
+}
+
+enum ClientType{
+	COMPANY,
+    INDIVIDUAL
+}
+//******************Externals****************//
+
+
+//******************Internals****************//
+
+entity Employee {
+	firstName String required maxlength(100),
+	lastName String required maxlength(100),
+	email String required pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
+	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+	hireDate LocalDate,
+	salary Double
+}
+
+entity Team{
+	name String required maxlength(100),
+    note String maxlength(250)
+}
+
+entity Mission{
+	creationDate LocalDate,
+    nbrDays Integer,
+    startDate LocalDate,
+    state MissionState
+}
+
+entity Duration{
+	dateFrom  LocalDate,
+    dateTo LocalDate
+}
+
+
+enum MissionState{
+	CREATED,
+    STARTED,
+    FINISHED
+}
+
+relationship ManyToOne{
+    Employee{team(name)} to Team,
+	Mission{team(name) required} to Team,
+    Duration{mission} to Mission
+}
+
+
+//******************Internals****************//
+
+
+
+//******************Stock****************//
+
+entity Category{
+	name String maxlength(100),
+    description String maxlength(250)
+}
+
+entity Product{
+	name String maxlength(100) required,
+    description String maxlength(250),
+    barCode Long,
+    buyingPrice Double,
+    sellingPrice Double required
+}
+
+entity Stock{
+	quantity Long min(0) required,
+    alertLimit Long min(0) required
+}
+
+entity Unit{
+	unit String maxlength(100) required,
+    description String maxlength(250)
+}
+
+entity Alert{
+	date Instant,
+    state AlertState
+}
+
+entity OrderStock{
+	date LocalDate,
+    quantity Long min(1),
+    state OrderStockState
+}
+
+enum AlertState{
+	CREATED,
+    VIEWED,
+    HANDLED
+}
+enum OrderStockState{
+	CREATED,
+    AWAITING,
+    RECEIVED    
+}
+
+relationship ManyToOne{
+	Product{category(name)} to Category,
+    Alert{stock} to Stock
+}
+
+relationship OneToOne{
+	Stock{product} to Product,
+    Stock{unit} to Unit,
+    OrderStock{alert} to Alert   
+}
+
+//******************Stock****************//
+
+//******************Commerce****************//
+
+entity Order{
+	date LocalDate,
+    total Double,
+    state OrderState
+}
+
+entity ItemLine{
+	quantity Long min(0),
+    total Double
+}
+
+entity Discount{
+	nature DiscountNature,
+    amount Double
+}
+
+entity Payment{
+	type PaymentType,
+    state PaymentState,
+	total Double,
+    rest Double
+}
+
+entity Bill{
+	dueDate LocalDate,
+    dueAmount Double min(0),
+    state BillState
+}
+
+enum OrderState{
+	CREATED,
+    PROCESSING,
+    SHIPPED,
+    CONFIRMED
+}
+enum DiscountNature{
+	PERCENTAGE,
+    CASH,
+    QUANTITY
+    
+}
+enum PaymentType{
+	ONE_TIME,
+    DIVIDED
+}
+enum PaymentState{
+	CREATED,
+    ONGOING,
+    SETTELED
+}
+enum BillState{
+	AWAITING,
+    UNPAID,
+    PAID
+}
+
+relationship ManyToOne{
+	ItemLine{order} to Order,
+    Bill{payment} to Payment 
+}
+
+relationship OneToOne{
+	Order{discount} to Discount,
+    Order{payment} to Payment
+}
+
+//******************Commerce****************//
+
+//****************inter-packeges relationships*********************
+
+relationship ManyToOne{
+	Mission{client} to Client,
+    OrderStock{supplier(name)} to Supplier,
+    OrderStock{employee} to Employee,
+    Order{client(name) required} to Client,
+    Order{employee} to Employee,
+    ItemLine{product(name) required} to Product
+}
+//****************inter-packeges relationships*********************
+
+//options
+paginate * with pagination
