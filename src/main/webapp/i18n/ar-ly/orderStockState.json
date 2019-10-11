@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "OrderStockState": {
+      "null": "",
+      "CREATED": "CREATED",
+      "AWAITING": "AWAITING",
+      "RECEIVED": "RECEIVED"
+    }
+  }
+}

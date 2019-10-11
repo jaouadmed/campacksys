@@ -1,0 +1,24 @@
+{
+  "campacksysApp": {
+    "alert": {
+      "home": {
+        "title": "Alerts",
+        "createLabel": "Créer un nouveau Alert",
+        "createOrEditLabel": "Créer ou éditer un Alert",
+        "notFound": "Aucun Alert trouvé"
+      },
+      "created": "Un nouveau Alert a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Alert avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Alert avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Alert {{ id }} ?"
+      },
+      "detail": {
+        "title": "Alert"
+      },
+      "date": "Date",
+      "state": "State",
+      "stock": "Stock"
+    }
+  }
+}

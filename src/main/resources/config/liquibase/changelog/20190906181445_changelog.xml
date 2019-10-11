@@ -1,0 +1,383 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="joe (generated)" id="1567793694448-1">
+        <createTable tableName="alert">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="alertPK"/>
+            </column>
+            <column name="date" type="datetime"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="stock_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-2">
+        <createTable tableName="bill">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="billPK"/>
+            </column>
+            <column name="due_amount" type="DOUBLE"/>
+            <column name="due_date" type="date"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-3">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="categoryPK"/>
+            </column>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="name" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-4">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="clientPK"/>
+            </column>
+            <column name="address" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_type" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-5">
+        <createTable tableName="discount">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="discountPK"/>
+            </column>
+            <column name="amount" type="DOUBLE"/>
+            <column name="nature" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-6">
+        <createTable tableName="duration">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="durationPK"/>
+            </column>
+            <column name="date_from" type="date"/>
+            <column name="date_to" type="date"/>
+            <column name="mission_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-7">
+        <createTable tableName="employee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="employeePK"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hire_date" type="date"/>
+            <column name="last_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary" type="DOUBLE"/>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-8">
+        <createTable tableName="item_line">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="item_linePK"/>
+            </column>
+            <column name="quantity" type="BIGINT"/>
+            <column name="total" type="DOUBLE"/>
+            <column name="order_id" type="BIGINT"/>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-9">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints primaryKey="true" primaryKeyName="jhi_authorityPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-10">
+        <createTable tableName="jhi_order">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_orderPK"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="total" type="DOUBLE"/>
+            <column name="client_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_id" type="BIGINT"/>
+            <column name="employee_id" type="BIGINT"/>
+            <column name="payment_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-11">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="datetime"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-12">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-13">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="activated" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(10)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="datetime"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-14">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-15">
+        <createTable tableName="mission">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="missionPK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="nbr_days" type="INT"/>
+            <column name="start_date" type="date"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="client_id" type="BIGINT"/>
+            <column name="team_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-16">
+        <createTable tableName="order_stock">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="order_stockPK"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="quantity" type="BIGINT"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="alert_id" type="BIGINT"/>
+            <column name="employee_id" type="BIGINT"/>
+            <column name="supplier_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-17">
+        <createTable tableName="payment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="paymentPK"/>
+            </column>
+            <column name="rest" type="DOUBLE"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="total" type="DOUBLE"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-18">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="productPK"/>
+            </column>
+            <column name="bar_code" type="BIGINT"/>
+            <column name="buying_price" type="DOUBLE"/>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="selling_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-19">
+        <createTable tableName="stock">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="stockPK"/>
+            </column>
+            <column name="alert_limit" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT"/>
+            <column name="unit_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-20">
+        <createTable tableName="supplier">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="supplierPK"/>
+            </column>
+            <column name="address" type="VARCHAR(250)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-21">
+        <createTable tableName="team">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="teamPK"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(250)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-22">
+        <createTable tableName="unit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="unitPK"/>
+            </column>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="unit" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-23">
+        <addUniqueConstraint columnNames="discount_id" constraintName="UC_JHI_ORDERDISCOUNT_ID_COL" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-24">
+        <addUniqueConstraint columnNames="payment_id" constraintName="UC_JHI_ORDERPAYMENT_ID_COL" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-25">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-26">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-27">
+        <addUniqueConstraint columnNames="alert_id" constraintName="UC_ORDER_STOCKALERT_ID_COL" tableName="order_stock"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-28">
+        <addUniqueConstraint columnNames="product_id" constraintName="UC_STOCKPRODUCT_ID_COL" tableName="stock"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-29">
+        <addUniqueConstraint columnNames="unit_id" constraintName="UC_STOCKUNIT_ID_COL" tableName="stock"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-30">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product" constraintName="FK1mtsbur82frn64de7balymq9s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-31">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-32">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-33">
+        <addForeignKeyConstraint baseColumnNames="stock_id" baseTableName="alert" constraintName="FK3gpc005fpj0b6i1hfcsbqx1hk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="stock" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-34">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-35">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="stock" constraintName="FK647a71tkf4uw5ykss5f1jyabv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="unit" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-36">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="employee" constraintName="FK8d7lrsr6kwirr93rx0tafnoqa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-37">
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="jhi_order" constraintName="FK8yio7r7wsjtr3n44858eqmf23" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="payment" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-38">
+        <addForeignKeyConstraint baseColumnNames="mission_id" baseTableName="duration" constraintName="FKc7jiyvxf3i6rpvaocjiju77jg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="mission" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-39">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="item_line" constraintName="FKcdufl1m29191to7ldoms3eapp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_order" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-40">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="jhi_order" constraintName="FKdbjm8g65ovxuem9p2uxureh83" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-41">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="mission" constraintName="FKei51qq37o8ahrvybb65iuqtsp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-42">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="jhi_order" constraintName="FKfrf0umyss946huex8y3dulpj2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-43">
+        <addForeignKeyConstraint baseColumnNames="alert_id" baseTableName="order_stock" constraintName="FKh5ugxf3iq5hy0l62vww2a11rw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="alert" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-44">
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="bill" constraintName="FKivsv2kk65fwd2wf855n0bjqvw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="payment" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-45">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="stock" constraintName="FKjghkvw2snnsr5gpct0of7xfcf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-46">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="item_line" constraintName="FKmf8j2pnrkb9dl0t5f7juruqtj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-47">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="mission" constraintName="FKoadm6khv9xh2ei3oee70hqh2l" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-48">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="order_stock" constraintName="FKptj0h9x2msi3nugi1txau9ogx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="supplier" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-49">
+        <addForeignKeyConstraint baseColumnNames="discount_id" baseTableName="jhi_order" constraintName="FKrav7jlav3m1ibwas9agkshkds" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="discount" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793694448-50">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="order_stock" constraintName="FKsux54dnb6ikw24mff04nuxrw9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

@@ -46,6 +46,23 @@ public class CacheConfiguration {
             createCache(cm, ma.camerapack.campacksys.domain.User.class.getName());
             createCache(cm, ma.camerapack.campacksys.domain.Authority.class.getName());
             createCache(cm, ma.camerapack.campacksys.domain.User.class.getName() + ".authorities");
+            createCache(cm, ma.camerapack.campacksys.domain.Client.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Supplier.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Employee.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Team.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Mission.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Duration.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Category.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Product.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Stock.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Unit.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Alert.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.OrderStock.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Order.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.ItemLine.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Discount.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Payment.class.getName());
+            createCache(cm, ma.camerapack.campacksys.domain.Bill.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

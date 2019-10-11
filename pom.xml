@@ -568,8 +568,8 @@
                         <driver>com.mysql.cj.jdbc.Driver</driver>
                         <url>jdbc:mysql://localhost:3306/CAMPACKSYS</url>
                         <defaultSchemaName>CAMPACKSYS</defaultSchemaName>
-                        <username>root</username>
-                        <password></password>
+                        <username>user</username>
+                        <password>1234</password>
                         <referenceUrl>hibernate:spring:ma.camerapack.campacksys.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                         <verbose>true</verbose>
                         <logging>debug</logging>

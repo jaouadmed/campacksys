@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="itemLine">
+            <h2><span jhiTranslate="campacksysApp.itemLine.detail.title">Item Line</span> {{itemLine.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.itemLine.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{itemLine.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.itemLine.total">Total</span></dt>
+                <dd>
+                    <span>{{itemLine.total}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.itemLine.order">Order</span></dt>
+                <dd>
+                    <div *ngIf="itemLine.order">
+                        <a [routerLink]="['/order', itemLine.order?.id, 'view']">{{itemLine.order?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.itemLine.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="itemLine.product">
+                        <a [routerLink]="['/product', itemLine.product?.id, 'view']">{{itemLine.product?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item-line', itemLine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

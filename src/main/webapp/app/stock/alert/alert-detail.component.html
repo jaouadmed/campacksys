@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="alert">
+            <h2><span jhiTranslate="campacksysApp.alert.detail.title">Alert</span> {{alert.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.alert.date">Date</span></dt>
+                <dd>
+                    <span>{{alert.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.alert.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.AlertState.' + alert.state}}">{{alert.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.alert.stock">Stock</span></dt>
+                <dd>
+                    <div *ngIf="alert.stock">
+                        <a [routerLink]="['/stock', alert.stock?.id, 'view']">{{alert.stock?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/alert', alert.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

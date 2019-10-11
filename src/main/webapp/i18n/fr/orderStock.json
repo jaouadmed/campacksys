@@ -1,0 +1,27 @@
+{
+  "campacksysApp": {
+    "orderStock": {
+      "home": {
+        "title": "OrderStocks",
+        "createLabel": "Créer un nouveau Order Stock",
+        "createOrEditLabel": "Créer ou éditer un Order Stock",
+        "notFound": "Aucun Order Stock trouvé"
+      },
+      "created": "Un nouveau Order Stock a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Order Stock avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Order Stock avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Order Stock {{ id }} ?"
+      },
+      "detail": {
+        "title": "Order Stock"
+      },
+      "date": "Date",
+      "quantity": "Quantity",
+      "state": "State",
+      "alert": "Alert",
+      "supplier": "Supplier",
+      "employee": "Employee"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "campacksysApp": {
+    "itemLine": {
+      "home": {
+        "title": "ItemLines",
+        "createLabel": "Créer un nouveau Item Line",
+        "createOrEditLabel": "Créer ou éditer un Item Line",
+        "notFound": "Aucun Item Line trouvé"
+      },
+      "created": "Un nouveau Item Line a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Item Line avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Item Line avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Item Line {{ id }} ?"
+      },
+      "detail": {
+        "title": "Item Line"
+      },
+      "quantity": "Quantity",
+      "total": "Total",
+      "order": "Order",
+      "product": "Product"
+    }
+  }
+}

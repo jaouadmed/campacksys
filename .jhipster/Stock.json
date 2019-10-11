@@ -1,0 +1,50 @@
+{
+    "name": "Stock",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "min",
+                "required"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "alertLimit",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "min",
+                "required"
+            ],
+            "fieldValidateRulesMin": 0
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "stock",
+            "relationshipName": "product",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "unit",
+            "otherEntityRelationshipName": "stock",
+            "relationshipName": "unit",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190906174222",
+    "entityTableName": "stock",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

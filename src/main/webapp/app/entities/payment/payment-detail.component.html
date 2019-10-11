@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="payment">
+            <h2><span jhiTranslate="campacksysApp.payment.detail.title">Payment</span> {{payment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.payment.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.PaymentType.' + payment.type}}">{{payment.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.payment.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.PaymentState.' + payment.state}}">{{payment.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.payment.total">Total</span></dt>
+                <dd>
+                    <span>{{payment.total}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.payment.rest">Rest</span></dt>
+                <dd>
+                    <span>{{payment.rest}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment', payment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

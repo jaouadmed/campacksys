@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-order-heading" jhiTranslate="campacksysApp.order.home.createOrEditLabel">Create or edit a Order</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date').invalid && (editForm.get('date').dirty || editForm.get('date').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.total" for="field_total">Total</label>
+                    <input type="number" class="form-control" name="total" id="field_total"
+                           formControlName="total"/>
+                    <div *ngIf="editForm.get('total').invalid && (editForm.get('total').dirty || editForm.get('total').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('total').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('total')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.state" for="field_state">State</label>
+                    <select class="form-control" name="state" formControlName="state" id="field_state">
+                        <option value="CREATED">{{'campacksysApp.OrderState.CREATED' | translate}}</option>
+                        <option value="PROCESSING">{{'campacksysApp.OrderState.PROCESSING' | translate}}</option>
+                        <option value="SHIPPED">{{'campacksysApp.OrderState.SHIPPED' | translate}}</option>
+                        <option value="CONFIRMED">{{'campacksysApp.OrderState.CONFIRMED' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('state').invalid && (editForm.get('state').dirty || editForm.get('state').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('state').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.discount" for="field_discount">Discount</label>
+                    <select class="form-control" id="field_discount" name="discount" formControlName="discount">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="discountOption.id === editForm.get('discount').value?.id ? editForm.get('discount').value : discountOption" *ngFor="let discountOption of discounts; trackBy: trackDiscountById">{{discountOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.payment" for="field_payment">Payment</label>
+                    <select class="form-control" id="field_payment" name="payment" formControlName="payment">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paymentOption.id === editForm.get('payment').value?.id ? editForm.get('payment').value : paymentOption" *ngFor="let paymentOption of payments; trackBy: trackPaymentById">{{paymentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.client" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" formControlName="client">
+                        <option *ngIf="!editForm.get('client').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="clientOption.id === editForm.get('client').value?.id ? editForm.get('client').value : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('client').invalid && (editForm.get('client').dirty || editForm.get('client').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('client').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.order.employee" for="field_employee">Employee</label>
+                    <select class="form-control" id="field_employee" name="employee" formControlName="employee">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === editForm.get('employee').value?.id ? editForm.get('employee').value : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

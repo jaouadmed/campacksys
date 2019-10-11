@@ -1,0 +1,23 @@
+{
+  "campacksysApp": {
+    "unit": {
+      "home": {
+        "title": "Units",
+        "createLabel": "Créer un nouveau Unit",
+        "createOrEditLabel": "Créer ou éditer un Unit",
+        "notFound": "Aucun Unit trouvé"
+      },
+      "created": "Un nouveau Unit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Unit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Unit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Unit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Unit"
+      },
+      "unit": "Unit",
+      "description": "Description"
+    }
+  }
+}

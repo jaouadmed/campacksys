@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-stock-heading" jhiTranslate="campacksysApp.stock.home.createOrEditLabel">Create or edit a Stock</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.stock.quantity" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                           formControlName="quantity"/>
+                    <div *ngIf="editForm.get('quantity').invalid && (editForm.get('quantity').dirty || editForm.get('quantity').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantity').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantity')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.stock.alertLimit" for="field_alertLimit">Alert Limit</label>
+                    <input type="number" class="form-control" name="alertLimit" id="field_alertLimit"
+                           formControlName="alertLimit"/>
+                    <div *ngIf="editForm.get('alertLimit').invalid && (editForm.get('alertLimit').dirty || editForm.get('alertLimit').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alertLimit').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alertLimit').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('alertLimit')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.stock.product" for="field_product">Product</label>
+                    <select class="form-control" id="field_product" name="product" formControlName="product">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productOption.id === editForm.get('product').value?.id ? editForm.get('product').value : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.stock.unit" for="field_unit">Unit</label>
+                    <select class="form-control" id="field_unit" name="unit" formControlName="unit">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="unitOption.id === editForm.get('unit').value?.id ? editForm.get('unit').value : unitOption" *ngFor="let unitOption of units; trackBy: trackUnitById">{{unitOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+    "name": "Duration",
+    "fields": [
+        {
+            "fieldName": "dateFrom",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateTo",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "mission",
+            "otherEntityRelationshipName": "duration",
+            "relationshipName": "mission",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190906174219",
+    "entityTableName": "duration",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-mission-heading" jhiTranslate="campacksysApp.mission.home.createOrEditLabel">Create or edit a Mission</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.creationDate" for="field_creationDate">Creation Date</label>
+                    <div class="input-group">
+                        <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker  #creationDateDp="ngbDatepicker" formControlName="creationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('creationDate').invalid && (editForm.get('creationDate').dirty || editForm.get('creationDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('creationDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.nbrDays" for="field_nbrDays">Nbr Days</label>
+                    <input type="number" class="form-control" name="nbrDays" id="field_nbrDays"
+                           formControlName="nbrDays"/>
+                    <div *ngIf="editForm.get('nbrDays').invalid && (editForm.get('nbrDays').dirty || editForm.get('nbrDays').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nbrDays').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('nbrDays')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.startDate" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" formControlName="startDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.state" for="field_state">State</label>
+                    <select class="form-control" name="state" formControlName="state" id="field_state">
+                        <option value="CREATED">{{'campacksysApp.MissionState.CREATED' | translate}}</option>
+                        <option value="STARTED">{{'campacksysApp.MissionState.STARTED' | translate}}</option>
+                        <option value="FINISHED">{{'campacksysApp.MissionState.FINISHED' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('state').invalid && (editForm.get('state').dirty || editForm.get('state').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('state').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.team" for="field_team">Team</label>
+                    <select class="form-control" id="field_team" name="team" formControlName="team">
+                        <option *ngIf="!editForm.get('team').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="teamOption.id === editForm.get('team').value?.id ? editForm.get('team').value : teamOption" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.name}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('team').invalid && (editForm.get('team').dirty || editForm.get('team').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('team').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.mission.client" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" formControlName="client">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientOption.id === editForm.get('client').value?.id ? editForm.get('client').value : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

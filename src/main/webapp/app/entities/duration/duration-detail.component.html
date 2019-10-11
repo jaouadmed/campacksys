@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="duration">
+            <h2><span jhiTranslate="campacksysApp.duration.detail.title">Duration</span> {{duration.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.duration.dateFrom">Date From</span></dt>
+                <dd>
+                    <span>{{duration.dateFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.duration.dateTo">Date To</span></dt>
+                <dd>
+                    <span>{{duration.dateTo}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.duration.mission">Mission</span></dt>
+                <dd>
+                    <div *ngIf="duration.mission">
+                        <a [routerLink]="['/mission', duration.mission?.id, 'view']">{{duration.mission?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/duration', duration.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

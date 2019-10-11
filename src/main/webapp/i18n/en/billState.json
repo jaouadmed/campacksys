@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "BillState": {
+      "null": "",
+      "AWAITING": "AWAITING",
+      "UNPAID": "UNPAID",
+      "PAID": "PAID"
+    }
+  }
+}

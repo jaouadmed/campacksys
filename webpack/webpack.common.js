@@ -7,11 +7,13 @@ const MergeJsonWebpackPlugin = require("merge-jsons-webpack-plugin");
 const utils = require('./utils.js');
 
 module.exports = (options) => ({
+
     resolve: {
         extensions: ['.ts', '.js'],
         modules: ['node_modules'],
         alias: {
             app: utils.root('src/main/webapp/app/'),
+            jquery: "jquery/src/jquery",
             ...rxPaths()
         }
     },
@@ -26,9 +28,9 @@ module.exports = (options) => ({
                 options: {
                     minimize: true,
                     caseSensitive: true,
-                    removeAttributeQuotes:false,
-                    minifyJS:false,
-                    minifyCSS:false
+                    removeAttributeQuotes: false,
+                    minifyJS: false,
+                    minifyCSS: false
                 },
                 exclude: /(src\/main\/webapp\/index.html)/
             },
@@ -50,6 +52,17 @@ module.exports = (options) => ({
             },
             // Ignore warnings about System.import in Angular
             { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
+            {
+                // Exposes jQuery for use outside Webpack build
+                test: require.resolve('jquery'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: 'jQuery'
+                }, {
+                    loader: 'expose-loader',
+                    options: '$'
+                }]
+            }
         ]
     },
     plugins: [
@@ -68,16 +81,23 @@ module.exports = (options) => ({
             }
         }),
         new CopyWebpackPlugin([
-            { from: './node_modules/swagger-ui/dist/css', to: 'swagger-ui/dist/css' },
-            { from: './node_modules/swagger-ui/dist/lib', to: 'swagger-ui/dist/lib' },
-            { from: './node_modules/swagger-ui/dist/swagger-ui.min.js', to: 'swagger-ui/dist/swagger-ui.min.js' },
+            //{ from: './node_modules/swagger-ui/dist/css', to: 'swagger-ui/dist/css' },
+            //{ from: './node_modules/swagger-ui/dist/lib', to: 'swagger-ui/dist/lib' },
+            //{ from: './node_modules/swagger-ui/dist/swagger-ui.min.js', to: 'swagger-ui/dist/swagger-ui.min.js' },
+            { from: './node_modules/swagger-ui/dist/swagger-ui.css', to: 'swagger-ui/dist/swagger-ui.css' },
+            { from: './node_modules/swagger-ui/dist/swagger-ui.js', to: 'swagger-ui/dist/swagger-ui.js' },
             { from: './src/main/webapp/swagger-ui/', to: 'swagger-ui' },
             { from: './src/main/webapp/content/', to: 'content' },
             { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
             { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
+            { from: './src/main/webapp/content/primeng/', to: 'content/primeng/' },
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            { from: './src/main/webapp/robots.txt', to: 'robots.txt' },
         ]),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        }),
         new MergeJsonWebpackPlugin({
             output: {
                 groupBy: [

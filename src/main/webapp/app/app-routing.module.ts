@@ -13,6 +13,18 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           path: 'admin',
           loadChildren: () => import('./admin/admin.module').then(m => m.CampacksysAdminModule)
         },
+        {
+          path: 'externals',
+          loadChildren: () => import(`./externals/externals.module`).then(m => m.ExternalsModule)
+        },
+        {
+          path: 'internals',
+          loadChildren: () => import(`./internals/internals.module`).then(m => m.InternalsModule)
+        },
+        {
+          path: 'stock',
+          loadChildren: () => import(`./stock/stock.module`).then(m => m.StockModule)
+        },
         ...LAYOUT_ROUTES
       ],
       { enableTracing: DEBUG_INFO_ENABLED }

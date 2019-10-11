@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="stock">
+            <h2><span jhiTranslate="campacksysApp.stock.detail.title">Stock</span> {{stock.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.stock.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{stock.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.stock.alertLimit">Alert Limit</span></dt>
+                <dd>
+                    <span>{{stock.alertLimit}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.stock.product">Product</span></dt>
+                <dd>
+                    <div *ngIf="stock.product">
+                        <a [routerLink]="['/product', stock.product?.id, 'view']">{{stock.product?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.stock.unit">Unit</span></dt>
+                <dd>
+                    <div *ngIf="stock.unit">
+                        <a [routerLink]="['/unit', stock.unit?.id, 'view']">{{stock.unit?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/stock', stock.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

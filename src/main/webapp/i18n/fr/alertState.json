@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "AlertState": {
+      "null": "",
+      "CREATED": "CREATED",
+      "VIEWED": "VIEWED",
+      "HANDLED": "HANDLED"
+    }
+  }
+}

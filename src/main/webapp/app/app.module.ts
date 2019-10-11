@@ -18,6 +18,8 @@ import { CampacksysHomeModule } from './home/home.module';
 import { CampacksysAccountModule } from './account/account.module';
 import { CampacksysEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
+import { CampacksysprimengModule } from './primeng/primeng.module';
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -36,6 +38,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     CampacksysCoreModule,
     CampacksysHomeModule,
     CampacksysAccountModule,
+    CampacksysprimengModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     CampacksysEntityModule,
     CampacksysAppRoutingModule

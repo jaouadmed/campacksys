@@ -1,0 +1,11 @@
+{
+  "campacksysApp": {
+    "OrderState": {
+      "null": "",
+      "CREATED": "CREATED",
+      "PROCESSING": "PROCESSING",
+      "SHIPPED": "SHIPPED",
+      "CONFIRMED": "CONFIRMED"
+    }
+  }
+}

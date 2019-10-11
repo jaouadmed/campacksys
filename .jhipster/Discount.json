@@ -1,0 +1,30 @@
+{
+    "name": "Discount",
+    "fields": [
+        {
+            "fieldName": "nature",
+            "fieldType": "DiscountNature",
+            "fieldValues": "PERCENTAGE,CASH,QUANTITY",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190906174228",
+    "entityTableName": "discount",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

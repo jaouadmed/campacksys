@@ -1,0 +1,38 @@
+{
+    "name": "Alert",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "AlertState",
+            "fieldValues": "CREATED,VIEWED,HANDLED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "stock",
+            "otherEntityRelationshipName": "alert",
+            "relationshipName": "stock",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190906174224",
+    "entityTableName": "alert",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

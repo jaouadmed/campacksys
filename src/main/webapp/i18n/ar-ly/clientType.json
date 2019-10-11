@@ -1,0 +1,9 @@
+{
+  "campacksysApp": {
+    "ClientType": {
+      "null": "",
+      "COMPANY": "COMPANY",
+      "INDIVIDUAL": "INDIVIDUAL"
+    }
+  }
+}

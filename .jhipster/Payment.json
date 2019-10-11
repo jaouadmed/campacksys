@@ -1,0 +1,45 @@
+{
+    "name": "Payment",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "PaymentType",
+            "fieldValues": "ONE_TIME,DIVIDED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "PaymentState",
+            "fieldValues": "CREATED,ONGOING,SETTELED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "total",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rest",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190906174229",
+    "entityTableName": "payment",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

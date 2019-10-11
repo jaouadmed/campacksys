@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="client">
+            <h2><span jhiTranslate="campacksysApp.client.detail.title">Client</span> {{client.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.client.name">Name</span></dt>
+                <dd>
+                    <span>{{client.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.client.address">Address</span></dt>
+                <dd>
+                    <span>{{client.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.client.email">Email</span></dt>
+                <dd>
+                    <span>{{client.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.client.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{client.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.client.clientType">Client Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.ClientType.' + client.clientType}}">{{client.clientType}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/client', client.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

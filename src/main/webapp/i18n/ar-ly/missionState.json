@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "MissionState": {
+      "null": "",
+      "CREATED": "CREATED",
+      "STARTED": "STARTED",
+      "FINISHED": "FINISHED"
+    }
+  }
+}

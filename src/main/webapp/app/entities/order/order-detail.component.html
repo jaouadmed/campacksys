@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="order">
+            <h2><span jhiTranslate="campacksysApp.order.detail.title">Order</span> {{order.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.order.date">Date</span></dt>
+                <dd>
+                    <span>{{order.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.total">Total</span></dt>
+                <dd>
+                    <span>{{order.total}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.OrderState.' + order.state}}">{{order.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.discount">Discount</span></dt>
+                <dd>
+                    <div *ngIf="order.discount">
+                        <a [routerLink]="['/discount', order.discount?.id, 'view']">{{order.discount?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.payment">Payment</span></dt>
+                <dd>
+                    <div *ngIf="order.payment">
+                        <a [routerLink]="['/payment', order.payment?.id, 'view']">{{order.payment?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="order.client">
+                        <a [routerLink]="['/client', order.client?.id, 'view']">{{order.client?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.order.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="order.employee">
+                        <a [routerLink]="['/employee', order.employee?.id, 'view']">{{order.employee?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/order', order.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

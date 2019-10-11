@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-duration-heading" jhiTranslate="campacksysApp.duration.home.createOrEditLabel">Create or edit a Duration</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.duration.dateFrom" for="field_dateFrom">Date From</label>
+                    <div class="input-group">
+                        <input id="field_dateFrom" type="text" class="form-control" name="dateFrom" ngbDatepicker  #dateFromDp="ngbDatepicker" formControlName="dateFrom"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateFromDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dateFrom').invalid && (editForm.get('dateFrom').dirty || editForm.get('dateFrom').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateFrom').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.duration.dateTo" for="field_dateTo">Date To</label>
+                    <div class="input-group">
+                        <input id="field_dateTo" type="text" class="form-control" name="dateTo" ngbDatepicker  #dateToDp="ngbDatepicker" formControlName="dateTo"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateToDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dateTo').invalid && (editForm.get('dateTo').dirty || editForm.get('dateTo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateTo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.duration.mission" for="field_mission">Mission</label>
+                    <select class="form-control" id="field_mission" name="mission" formControlName="mission">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="missionOption.id === editForm.get('mission').value?.id ? editForm.get('mission').value : missionOption" *ngFor="let missionOption of missions; trackBy: trackMissionById">{{missionOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

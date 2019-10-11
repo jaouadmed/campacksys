@@ -1,0 +1,9 @@
+{
+  "campacksysApp": {
+    "PaymentType": {
+      "null": "",
+      "ONE_TIME": "ONE_TIME",
+      "DIVIDED": "DIVIDED"
+    }
+  }
+}

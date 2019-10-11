@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "PaymentState": {
+      "null": "",
+      "CREATED": "CREATED",
+      "ONGOING": "ONGOING",
+      "SETTELED": "SETTELED"
+    }
+  }
+}

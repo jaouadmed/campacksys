@@ -1,0 +1,10 @@
+{
+  "campacksysApp": {
+    "DiscountNature": {
+      "null": "",
+      "PERCENTAGE": "PERCENTAGE",
+      "CASH": "CASH",
+      "QUANTITY": "QUANTITY"
+    }
+  }
+}

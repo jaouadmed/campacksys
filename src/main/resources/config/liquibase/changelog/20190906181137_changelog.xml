@@ -1,0 +1,109 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="joe (generated)" id="1567793532930-8">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product" constraintName="FK1mtsbur82frn64de7balymq9s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-9">
+        <addForeignKeyConstraint baseColumnNames="stock_id" baseTableName="alert" constraintName="FK3gpc005fpj0b6i1hfcsbqx1hk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="stock" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-10">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="stock" constraintName="FK647a71tkf4uw5ykss5f1jyabv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="unit" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-11">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="employee" constraintName="FK8d7lrsr6kwirr93rx0tafnoqa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-12">
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="jhi_order" constraintName="FK8yio7r7wsjtr3n44858eqmf23" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="payment" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-13">
+        <addForeignKeyConstraint baseColumnNames="mission_id" baseTableName="duration" constraintName="FKc7jiyvxf3i6rpvaocjiju77jg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="mission" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-14">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="item_line" constraintName="FKcdufl1m29191to7ldoms3eapp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_order" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-15">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="jhi_order" constraintName="FKdbjm8g65ovxuem9p2uxureh83" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-16">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="mission" constraintName="FKei51qq37o8ahrvybb65iuqtsp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-17">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="jhi_order" constraintName="FKfrf0umyss946huex8y3dulpj2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-18">
+        <addForeignKeyConstraint baseColumnNames="alert_id" baseTableName="order_stock" constraintName="FKh5ugxf3iq5hy0l62vww2a11rw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="alert" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-19">
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="bill" constraintName="FKivsv2kk65fwd2wf855n0bjqvw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="payment" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-20">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="stock" constraintName="FKjghkvw2snnsr5gpct0of7xfcf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-21">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="item_line" constraintName="FKmf8j2pnrkb9dl0t5f7juruqtj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-22">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="mission" constraintName="FKoadm6khv9xh2ei3oee70hqh2l" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-23">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="order_stock" constraintName="FKptj0h9x2msi3nugi1txau9ogx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="supplier" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-24">
+        <addForeignKeyConstraint baseColumnNames="discount_id" baseTableName="jhi_order" constraintName="FKrav7jlav3m1ibwas9agkshkds" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="discount" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-25">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="order_stock" constraintName="FKsux54dnb6ikw24mff04nuxrw9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-26">
+        <dropForeignKeyConstraint baseTableName="employee" constraintName="fk_employee_login_id"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-27">
+        <dropUniqueConstraint constraintName="ux_employee_login_id" tableName="employee"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-28">
+        <dropUniqueConstraint constraintName="ux_login_role_id" tableName="login"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-29">
+        <dropTable tableName="login"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-30">
+        <dropTable tableName="privilege"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-31">
+        <dropTable tableName="role"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-32">
+        <dropTable tableName="role_privilege"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-33">
+        <dropColumn columnName="login_id" tableName="employee"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-1">
+        <dropUniqueConstraint constraintName="UC_JHI_ORDERDISCOUNT_ID_COL" tableName="jhi_order"/>
+        <addUniqueConstraint columnNames="discount_id" constraintName="UC_JHI_ORDERDISCOUNT_ID_COL" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-2">
+        <dropUniqueConstraint constraintName="UC_JHI_ORDERPAYMENT_ID_COL" tableName="jhi_order"/>
+        <addUniqueConstraint columnNames="payment_id" constraintName="UC_JHI_ORDERPAYMENT_ID_COL" tableName="jhi_order"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-3">
+        <dropUniqueConstraint constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-4">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-5">
+        <dropUniqueConstraint constraintName="UC_ORDER_STOCKALERT_ID_COL" tableName="order_stock"/>
+        <addUniqueConstraint columnNames="alert_id" constraintName="UC_ORDER_STOCKALERT_ID_COL" tableName="order_stock"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-6">
+        <dropUniqueConstraint constraintName="UC_STOCKPRODUCT_ID_COL" tableName="stock"/>
+        <addUniqueConstraint columnNames="product_id" constraintName="UC_STOCKPRODUCT_ID_COL" tableName="stock"/>
+    </changeSet>
+    <changeSet author="joe (generated)" id="1567793532930-7">
+        <dropUniqueConstraint constraintName="UC_STOCKUNIT_ID_COL" tableName="stock"/>
+        <addUniqueConstraint columnNames="unit_id" constraintName="UC_STOCKUNIT_ID_COL" tableName="stock"/>
+    </changeSet>
+</databaseChangeLog>

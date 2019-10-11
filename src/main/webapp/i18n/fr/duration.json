@@ -1,0 +1,24 @@
+{
+  "campacksysApp": {
+    "duration": {
+      "home": {
+        "title": "Durations",
+        "createLabel": "Créer un nouveau Duration",
+        "createOrEditLabel": "Créer ou éditer un Duration",
+        "notFound": "Aucun Duration trouvé"
+      },
+      "created": "Un nouveau Duration a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Duration avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Duration avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Duration {{ id }} ?"
+      },
+      "detail": {
+        "title": "Duration"
+      },
+      "dateFrom": "Date From",
+      "dateTo": "Date To",
+      "mission": "Mission"
+    }
+  }
+}

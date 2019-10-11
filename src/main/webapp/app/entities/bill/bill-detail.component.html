@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bill">
+            <h2><span jhiTranslate="campacksysApp.bill.detail.title">Bill</span> {{bill.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.bill.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{bill.dueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.bill.dueAmount">Due Amount</span></dt>
+                <dd>
+                    <span>{{bill.dueAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.bill.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.BillState.' + bill.state}}">{{bill.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.bill.payment">Payment</span></dt>
+                <dd>
+                    <div *ngIf="bill.payment">
+                        <a [routerLink]="['/payment', bill.payment?.id, 'view']">{{bill.payment?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bill', bill.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

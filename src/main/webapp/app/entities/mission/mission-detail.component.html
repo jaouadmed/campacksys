@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mission">
+            <h2><span jhiTranslate="campacksysApp.mission.detail.title">Mission</span> {{mission.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="campacksysApp.mission.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{mission.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.mission.nbrDays">Nbr Days</span></dt>
+                <dd>
+                    <span>{{mission.nbrDays}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.mission.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{mission.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.mission.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'campacksysApp.MissionState.' + mission.state}}">{{mission.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.mission.team">Team</span></dt>
+                <dd>
+                    <div *ngIf="mission.team">
+                        <a [routerLink]="['/team', mission.team?.id, 'view']">{{mission.team?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="campacksysApp.mission.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="mission.client">
+                        <a [routerLink]="['/client', mission.client?.id, 'view']">{{mission.client?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mission', mission.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -6,16 +6,16 @@
 entity Client {
 	name String required maxlength(100),
     address String required maxlength(250),
-	email String pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
-	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+	email String pattern(/.+\@.+\..+/),
+	phoneNumber String required pattern(/[0-9]{10}/),
     clientType ClientType
 }
 
 entity Supplier {
-	name String maxlength(100),
+	name String required maxlength(100),
     address String maxlength(250),
-	email String required pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
-	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/)
+	email String pattern(/.+\@.+\..+/),
+	phoneNumber String required pattern(/[0-9]{10}/)
 }
 
 enum ClientType{
@@ -30,8 +30,8 @@ enum ClientType{
 entity Employee {
 	firstName String required maxlength(100),
 	lastName String required maxlength(100),
-	email String required pattern(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/),
-	phoneNumber String required pattern(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/),
+	email String pattern(/.+\@.+\..+/),
+	phoneNumber String required pattern(/[0-9]{10}/),
 	hireDate LocalDate,
 	salary Double
 }
@@ -42,15 +42,15 @@ entity Team{
 }
 
 entity Mission{
-	creationDate LocalDate,
-    nbrDays Integer,
+	creationDate LocalDate required,
+    nbrDays Integer required,
     startDate LocalDate,
-    state MissionState
+    state MissionState required
 }
 
 entity Duration{
-	dateFrom  LocalDate,
-    dateTo LocalDate
+	dateFrom  LocalDate required,
+    dateTo LocalDate required
 }
 
 
@@ -74,7 +74,7 @@ relationship ManyToOne{
 //******************Stock****************//
 
 entity Category{
-	name String maxlength(100),
+	name String maxlength(100) required,
     description String maxlength(250)
 }
 
@@ -97,14 +97,14 @@ entity Unit{
 }
 
 entity Alert{
-	date Instant,
-    state AlertState
+	date Instant required,
+    state AlertState required
 }
 
 entity OrderStock{
-	date LocalDate,
-    quantity Long min(1),
-    state OrderStockState
+	date LocalDate required,
+    quantity Long min(1) required,
+    state OrderStockState required
 }
 
 enum AlertState{
@@ -134,32 +134,32 @@ relationship OneToOne{
 //******************Commerce****************//
 
 entity Order{
-	date LocalDate,
-    total Double,
-    state OrderState
+	date LocalDate required,
+    total Double required,
+    state OrderState required
 }
 
 entity ItemLine{
-	quantity Long min(0),
-    total Double
+	quantity Long min(0) required,
+    total Double required
 }
 
 entity Discount{
-	nature DiscountNature,
-    amount Double
+	nature DiscountNature required,
+    amount Double required
 }
 
 entity Payment{
-	type PaymentType,
-    state PaymentState,
-	total Double,
-    rest Double
+	type PaymentType required,
+    state PaymentState required,
+	total Double required,
+    rest Double required
 }
 
 entity Bill{
-	dueDate LocalDate,
-    dueAmount Double min(0),
-    state BillState
+	dueDate LocalDate required,
+    dueAmount Double min(0) required,
+    state BillState required
 }
 
 enum OrderState{

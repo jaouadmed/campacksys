@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-payment-heading" jhiTranslate="campacksysApp.payment.home.createOrEditLabel">Create or edit a Payment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.payment.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="ONE_TIME">{{'campacksysApp.PaymentType.ONE_TIME' | translate}}</option>
+                        <option value="DIVIDED">{{'campacksysApp.PaymentType.DIVIDED' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('type').invalid && (editForm.get('type').dirty || editForm.get('type').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('type').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.payment.state" for="field_state">State</label>
+                    <select class="form-control" name="state" formControlName="state" id="field_state">
+                        <option value="CREATED">{{'campacksysApp.PaymentState.CREATED' | translate}}</option>
+                        <option value="ONGOING">{{'campacksysApp.PaymentState.ONGOING' | translate}}</option>
+                        <option value="SETTELED">{{'campacksysApp.PaymentState.SETTELED' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('state').invalid && (editForm.get('state').dirty || editForm.get('state').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('state').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.payment.total" for="field_total">Total</label>
+                    <input type="number" class="form-control" name="total" id="field_total"
+                           formControlName="total"/>
+                    <div *ngIf="editForm.get('total').invalid && (editForm.get('total').dirty || editForm.get('total').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('total').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('total')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="campacksysApp.payment.rest" for="field_rest">Rest</label>
+                    <input type="number" class="form-control" name="rest" id="field_rest"
+                           formControlName="rest"/>
+                    <div *ngIf="editForm.get('rest').invalid && (editForm.get('rest').dirty || editForm.get('rest').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('rest').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('rest')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
